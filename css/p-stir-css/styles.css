@@ -1,0 +1,51 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #69a2b8;
+    color: #000;
+}
+
+.navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Adjust the values as needed */
+}
+
+.nav-link {
+    color: #000;
+    background-color: transparent;
+    text-decoration: none;
+    padding: 10px;
+    /* Adjust padding as needed */
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    width: calc(100% - 16px);
+    /* Adjusted width to account for 10 pixels on both sides */
+    height: 2px;
+    bottom: 10px;
+    left: 8px;
+    /* Adjusted left to account for 10 pixels on the left */
+    background-color: #000;
+    transform-origin: bottom left;
+    transform: scaleX(0);
+    /* Initially set the width to 0, will be scaled on hover */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover::before {
+    transform: scaleX(1);
+    background-color: #000;
+}
+
+
+
+.nav-link:hover {
+    color: #000;
+    /* Change text color on hover */
+}
