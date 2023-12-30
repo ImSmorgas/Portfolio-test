@@ -8,14 +8,16 @@ body {
 }
 
 .navbar {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adjust the values as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Adjust the values as needed */
 }
 
 .nav-link {
     color: #fefefe;
     background-color: transparent;
     text-decoration: none;
-    padding: 10px; /* Adjust padding as needed */
+    padding: 10px;
+    /* Adjust padding as needed */
     position: relative;
     overflow: hidden;
 }
@@ -23,13 +25,16 @@ body {
 .nav-link::before {
     content: "";
     position: absolute;
-    width: calc(100% - 16px); /* Adjusted width to account for 10 pixels on both sides */
+    width: calc(100% - 16px);
+    /* Adjusted width to account for 10 pixels on both sides */
     height: 2px;
     bottom: 10px;
-    left: 8px; /* Adjusted left to account for 10 pixels on the left */
+    left: 8px;
+    /* Adjusted left to account for 10 pixels on the left */
     background-color: #fefefe;
     transform-origin: bottom left;
-    transform: scaleX(0); /* Initially set the width to 0, will be scaled on hover */
+    transform: scaleX(0);
+    /* Initially set the width to 0, will be scaled on hover */
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
@@ -41,5 +46,6 @@ body {
 
 
 .nav-link:hover {
-    color: #fefefe; /* Change text color on hover */
+    color: #fefefe;
+    /* Change text color on hover */
 }

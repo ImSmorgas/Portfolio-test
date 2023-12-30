@@ -14,55 +14,49 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css">
 
+    <!-- GSAP Script -->
+    <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.9.0/dist/MotionPathPlugin.min.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/landing-css/styles.css">
 
     <!-- Custom JS -->
     <script src="js/landing-js/script.js"></script>
-
     <title>Thomas Goodpasture</title>
 </head>
 
 
 <body>
-    <div class="gradient-bg">
-        <svg xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <filter id="goo">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-                        result="goo" />
-                    <feBlend in="SourceGraphic" in2="goo" />
-                </filter>
-            </defs>
-        </svg>
-        <div class="gradients-container">
-            <div class="g1"></div>
-            <div class="g2"></div>
-            <div class="g3"></div>
-            <div class="g4"></div>
-            <div class="g5"></div>
-            <div class="interactive"></div>
-        </div>
-    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" height="0" width="0">
+        <filter xmlns="http://www.w3.org/2000/svg" id="colormatrix" filterUnits="userSpaceOnUse" x="0" y="0"
+            width="100%">
+            <feGaussianBlur stdDeviation="20" />
+            <feColorMatrix mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -15" result="cutoff" />
+        </filter>
+    </svg>
+    <svg viewBox="0 0 100 100" class="bg">
+        <g class="fmx">
+            <image id="bg-c1" href="images/lest-g.png" x="-25%" y="-25%" />
+            <image id="bg-c2" href="images/lest-t.png" x="100%" y="100%" />
+            <image id="bg-c3" href="images/lest-y.png" x="62.5%" y="-25%" />
+            <image id="bg-c4" href="images/lest-p.png" x="12.5%" y="100%" />
+            <image id="bg-c5" href="images/lest-r.png" x="10%" y="20%" />
+            <image id="bg-ci" href="images/i-w.png" x="-9.375%" y="-9.375%" width="18.75%" height="18.75%" />
+        </g>
+    </svg>
     <div class="pages-container">
         <div class="pages" id="pages1">
             <div class="page one" id="1">
                 <nav>
                     <button class="vertical right" onclick="slide('next', 'pages1')"></button>
                 </nav>
-
-                <div class="row">
-                    <div class="col-12">
-                        <h1
-                            class="animated-element-1s position-absolute top-0 start-50 translate-middle-x p-4 text-center">
-                            My Favorite Projects
-                        </h1>
-                    </div>
-                </div>
-                <div class="content pb-3">
+                <h1 class="p-5 text-center">
+                    My Favorite Projects
+                </h1>
+                <div class="container-lg">
                     <div class="row row-cols-1 row-cols-md-2 g-3 pb-3">
-                        <div class="col animated-element-1s">
+                        <div class="col">
                             <div class="image-container glass delayed-hover rounded-5">
                                 <a href="p-chattanooga.html">
                                     <img src="images/chattanooga.png" class="w-90 h-90 mx-auto d-block p-3"
@@ -71,7 +65,16 @@
                                 <h4 class="text-center">Visit Chattanooga</h4>
                             </div>
                         </div>
-                        <div class="col animated-element-1s">
+                        <div class="col p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto perferendis maxime dicta
+                            voluptate corporis nemo consequatur saepe dolorem eaque, asperiores consequuntur facilis eos
+                            autem rerum repudiandae et voluptatum in voluptatem? Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Laborum nihil consequuntur fugit! Amet porro quae nobis facilis pariatur
+                            molestiae accusantium modi quo animi. Doloribus hic repellat unde ut similique quas.
+                        </div>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-2 g-3 pb-3">
+                        <div class="col">
                             <div class="image-container glass delayed-hover rounded-5">
                                 <a href="p-florida.html">
                                     <img src="images/florida.png" class="w-90 h-90 mx-auto d-block p-3"
@@ -80,9 +83,16 @@
                                 <h4 class="text-center">Group Project</h4>
                             </div>
                         </div>
+                        <div class="col p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto perferendis maxime dicta
+                            voluptate corporis nemo consequatur saepe dolorem eaque, asperiores consequuntur facilis eos
+                            autem rerum repudiandae et voluptatum in voluptatem? Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Laborum nihil consequuntur fugit! Amet porro quae nobis facilis pariatur
+                            molestiae accusantium modi quo animi. Doloribus hic repellat unde ut similique quas.
+                        </div>
                     </div>
                     <div class="row row-cols-2 row-cols-md-4 g-3 pb-3">
-                        <div class="col animated-element-1s">
+                        <div class="col">
                             <div class="image-container glass delayed-hover rounded-5">
                                 <a href="p-stir.html">
                                     <img src="images/stir-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
@@ -91,7 +101,7 @@
                                 <h4 class="text-center">STIR Mobile Mockup</h4>
                             </div>
                         </div>
-                        <div class="col animated-element-1s">
+                        <div class="col">
                             <div class="image-container glass delayed-hover rounded-5">
                                 <a href="#">
                                     <img src="images/ph-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
@@ -100,7 +110,7 @@
                                 <h4 class="text-center">placeholder</h4>
                             </div>
                         </div>
-                        <div class="col animated-element-1s">
+                        <div class="col">
                             <div class="image-container glass delayed-hover rounded-5">
                                 <a href="#">
                                     <img src="images/ph-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
@@ -109,7 +119,7 @@
                                 <h4 class="text-center">placeholder</h4>
                             </div>
                         </div>
-                        <div class="col animated-element-1s">
+                        <div class="col">
                             <div class="image-container glass delayed-hover rounded-5">
                                 <a href="#">
                                     <img src="images/ph-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
@@ -128,85 +138,84 @@
                     <div class="arrow-indicator-left beside-left"></div>
                     <div class="arrow-indicator-right beside-right"></div>
                 </nav>
-                <h1 class="animated-element-1s">Welcome</h1>
-                <h2 class="animated-element-2s">These are your navigation buttons</h2>
-                <h3 class="animated-element-3s">Use them to find out more about me</h3>
-            </div>
-            <div class="page three" id="3">
-                <nav>
-                    <button class="vertical left" onclick="slide('prev', 'pages1')"></button>
-                </nav>
-                <div class="content">
-                    <h1 class="animated-element-1s text-end">Room to Play</h1>
+                <div class="">
+                    <h1 class="animated-element-1s px-5 pt-5 text-center">Welcome</h1>
+                    <h2 class="animated-element-2s px-5 text-center">These are your navigation buttons</h2>
+                    <h3 class="animated-element-3s px-5 text-center">Use them to find out more about me</h3>
                 </div>
 
-            </div>
-        </div>
-        <div class="pages" id="pages2">
-            <div class="page four" id="4">
-                <h1 class="animated-element-1s">Portfolio Continued</h1>
-            </div>
-            <div class="page five" id="5">
                 <div class="content">
-                    <h1 class="animated-element-1s">Who am I?</h1>
-                    <div class="row row-cols-1 row-cols-md-4 g-3">
-                        <div class="col animated-element-1s">
+                    <div class="container-lg">
+                        <h1 class="py-5">Who am I?</h1>
+                        <div class="row row-cols-1 row-cols-md-4 g-3">
+                            <div class="col">
 
-                            <div class="image-container glass delayed-hover rounded-5">
-                                <img src="images/ph-7x10.png" class="w-90 h-90 mx-auto d-block p-3" alt="placeholder">
-                            </div>
-                        </div>
-                        <div class="col animated-element-1s">
-                            <div class="row g-3 mb-3 mx-1">
-                                <div class="image-container glass delayed-hover rounded-5">
-                                    <img src="images/ph-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
-                                        alt="placeholder">
-                                </div>
-                            </div>
-                            <div class="row g-3 mx-1">
-                                <div class="image-container glass delayed-hover rounded-5">
-                                    <img src="images/ph-14x5.png" class="w-90 h-90 mx-auto d-block p-3"
-                                        alt="placeholder">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col animated-element-1s">
-                            <div class="row g-3 mb-3 mx-1">
-                                <div class="image-container glass delayed-hover rounded-5">
-                                    <img src="images/ph-14x5.png" class="w-90 h-90 mx-auto d-block p-3"
-                                        alt="placeholder">
-                                </div>
-                            </div>
-                            <div class="row g-3 mx-1">
-                                <div class="image-container glass delayed-hover rounded-5">
-                                    <img src="images/ph-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
-                                        alt="placeholder">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col animated-element-1s">
-                            <div class="row g-3 mb-3 mx-1">
-                                <div class="image-container glass delayed-hover rounded-5">
-                                    <img src="images/ph-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
-                                        alt="placeholder">
-                                </div>
-                            </div>
-                            <div class="row g-3 mx-1">
                                 <div class="image-container glass delayed-hover rounded-5">
                                     <img src="images/ph-7x10.png" class="w-90 h-90 mx-auto d-block p-3"
                                         alt="placeholder">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row g-3 mb-3 mx-1">
+                                    <div class="image-container glass delayed-hover rounded-5">
+                                        <img src="images/ph-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
+                                            alt="placeholder">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mx-1">
+                                    <div class="image-container glass delayed-hover rounded-5">
+                                        <img src="images/ph-14x5.png" class="w-90 h-90 mx-auto d-block p-3"
+                                            alt="placeholder">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row g-3 mb-3 mx-1">
+                                    <div class="image-container glass delayed-hover rounded-5">
+                                        <img src="images/ph-14x5.png" class="w-90 h-90 mx-auto d-block p-3"
+                                            alt="placeholder">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mx-1">
+                                    <div class="image-container glass delayed-hover rounded-5">
+                                        <img src="images/ph-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
+                                            alt="placeholder">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row g-3 mb-3 mx-1">
+                                    <div class="image-container glass delayed-hover rounded-5">
+                                        <img src="images/ph-7x5.png" class="w-90 h-90 mx-auto d-block p-3"
+                                            alt="placeholder">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mx-1">
+                                    <div class="image-container glass delayed-hover rounded-5">
+                                        <img src="images/ph-7x10.png" class="w-90 h-90 mx-auto d-block p-3"
+                                            alt="placeholder">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="page six" id="6">
-                <div>
-                    <h1 class="animated-element-1s">Send Me A Message</h1>
+            <div class="page three" id="3">
+                <nav>
+                    <button class="vertical left" onclick="slide('prev', 'pages1')"></button>
+                </nav>
+                <h1 class="animated-element-1s text-center">Room to Play</h1>
+                <div class="content">
+                    <h2 class="animated-element-1s text-justify ml-auto d-block">The friendly ball<br>that
+                        follows
+                        your<br>cursor can
+                        play<br>with the
+                        others</h2>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 

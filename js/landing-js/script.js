@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let sharedPageIndex = 0;
     let shouldAutoScroll = true;
 
-    const gradientBg = document.querySelector(".gradient-bg");
+    const gradientBg = document.querySelector(".bg");
     const pagesContainer = document.querySelector(".pages-container");
 
     window.addEventListener("scroll", function () {
@@ -95,36 +95,140 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Nav
 
-// 1
 
-// Animated Elements
-// Mouse Affect
-document.addEventListener('DOMContentLoaded', () => {
-    const interBubble = document.querySelector('.interactive');
-    let curX = 0;
-    let curY = 0;
-    let tgX = 0;
-    let tgY = 0;
+// Background
+// Balls
+document.addEventListener('DOMContentLoaded', function () {
 
-    function move() {
-        curX += (tgX - curX) / 20;
-        curY += (tgY - curY) / 20;
-        interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-        requestAnimationFrame(() => {
-            move();
-        });
-    }
-
-    window.addEventListener('mousemove', (event) => {
-        tgX = event.clientX;
-        tgY = event.clientY + window.scrollY;
+    gsap.to('#bg-c1', {
+        xPercent: 400,
+        yPercent: 500,
+        duration: 45,
+        ease: 'none',
+        repeat: -1,
+        yoyo: true,
     });
 
-    move();
+    gsap.to('#bg-c2', {
+        xPercent: -400,
+        yPercent: -500,
+        duration: 25,
+        ease: 'none',
+        repeat: -1,
+        yoyo: true,
+    });
+
+    gsap.to('#bg-c3', {
+        yPercent: 500,
+        duration: 55,
+        ease: 'none',
+        repeat: -1,
+        yoyo: true,
+    });
+
+    gsap.to('#bg-c4', {
+        yPercent: -600,
+        duration: 35,
+        ease: 'none',
+        repeat: -1,
+        yoyo: true,
+    });
+
+    gsap.to('#bg-c5', {
+        duration: 75,
+        ease: 'none',
+        repeat: -1,
+        motionPath: {
+            path: [
+                { x: 10, y: 0 },
+                { x: 0, y: 10 },
+                { x: -10, y: 0 },
+                { x: 0, y: -10 },
+            ],
+            align: '#bg-c5',
+            autoRotate: true,
+        },
+    });
+
+    const cursorFollower = document.getElementById('bg-ci');
+
+    document.addEventListener('mousemove', (event) => {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        const svgElement = document.querySelector('.bg');
+        const svgRect = svgElement.getBoundingClientRect();
+        const viewBox = svgElement.viewBox.baseVal;
+
+        const scaleX = viewBox.width / svgRect.width;
+        const scaleY = viewBox.height / svgRect.height;
+
+        const offsetX = (mouseX - svgRect.left) * scaleX;
+        const offsetY = (mouseY - svgRect.top) * scaleY;
+
+        // Check if the browser is Safari
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+        // Set the duration based on the browser
+        const duration = isSafari ? 0.0 : 0.3;
+
+        gsap.to(cursorFollower, {
+            x: offsetX,
+            y: offsetY,
+            duration: duration,
+            ease: 'power2.out',
+        });
+    });
+
+    // Set viewBox dimensions to be twice the size of the screen
+    const svgElement = document.querySelector('.bg');
+    svgElement.setAttribute('viewBox', `0 0 ${window.innerWidth} ${window.innerHeight}`);
+
+    // Update the width and height of the filter based on the screen size (doubled)
+    const filterElement = document.getElementById('colormatrix');
+    filterElement.setAttribute('width', window.innerWidth);
+    filterElement.setAttribute('height', window.innerHeight);
+
+    // Update the filter when the window is resized
+    window.addEventListener('resize', () => {
+        filterElement.setAttribute('width', window.innerWidth);
+        filterElement.setAttribute('height', window.innerHeight);
+    });
+});
+// Small Fix For Safari's Discrimination Against SVGs
+document.addEventListener('DOMContentLoaded', function () {
+    // Check if the browser is Safari
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    // Select the elements you want to modify
+    const bgElements = document.querySelectorAll('#bg-c1, #bg-c2, #bg-c3, #bg-c4, #bg-c5');
+
+    // Adjust width and height if the browser is Safari
+    if (isSafari) {
+        bgElements.forEach(element => {
+            element.style.width = '25%';
+            element.style.height = '25%';
+        });
+    }
+});
+document.addEventListener('DOMContentLoaded', function () {
+    // Check if the browser is Safari
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    // Select the SVG element
+    const bgSvg = document.querySelector('.bg');
+
+    // Hide the SVG if the browser is Safari
+    if (isSafari) {
+        bgSvg.style.display = 'none';
+    }
 });
 
+
+
+// 1
+// Animated Elements
 // AE  1
 document.addEventListener("DOMContentLoaded", function () {
     const containerElement = document.getElementById('1');
@@ -143,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 target.style.animation = null; // Re-enable animation
             }
         });
-    }, { threshold: 1 });
+    }, { threshold: 0.01 });
 
     animatedElements.forEach(element => {
         observer.observe(element);
@@ -182,12 +286,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Animated Elements
 
 // 2
-
 // Animated Elements
-
 // AE 1s 2
 document.addEventListener("DOMContentLoaded", function () {
     const containerElement = document.getElementById('2');
@@ -259,104 +360,23 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(element);
     });
 });
-// AE No Move 2
-document.addEventListener("DOMContentLoaded", function () {
-    const containerElement = document.getElementById('2');
-    const animatedElements = containerElement.querySelectorAll('.animated-element-no-move');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            const target = entry.target;
-
-            if (entry.isIntersecting && !target.classList.contains('active')) {
-                target.classList.add('active');
-            } else if (!entry.isIntersecting && target.classList.contains('active')) {
-                target.classList.remove('active');
-                target.style.animation = 'none'; // Reset animation when out of view
-                void target.offsetWidth; // Trigger reflow for the next animation
-                target.style.animation = null; // Re-enable animation
-            }
-        });
-    }, { threshold: 1 });
-
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
-});
-// AE BAV
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll('.button-animated-vertical');
-    const containerElement = document.getElementById('2');
-    const targetElement = containerElement; // Change this to the actual ID of the element you want to observe
-
-    buttons.forEach(button => {
-        let hasAnimated = false;
-
-        const resetAnimation = () => {
-            button.style.animation = 'none'; // Reset animation
-            void button.offsetWidth; // Trigger reflow for the next animation
-            button.style.animation = null; // Re-enable animation
-        };
-
-        const startAnimation = () => {
-            button.classList.add('button-animated-vertical');
-            hasAnimated = true;
-
-            // Stop the animation after 9 seconds
-            setTimeout(() => {
-                stopAnimation();
-            }, 9000);
-        };
-
-        const stopAnimation = () => {
-            button.classList.remove('button-animated-vertical');
-            resetAnimation();
-            hasAnimated = false;
-            observer.disconnect(); // Disconnect the observer to stop observing
-        };
-
-        const observerCallback = (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting && !hasAnimated) {
-                    startAnimation();
-                } else if (!entry.isIntersecting && hasAnimated) {
-                    stopAnimation();
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(observerCallback, {
-            root: null, // viewport
-            rootMargin: '0px', // no margin
-            threshold: 0.5 // 50% of the target element in view
-        });
-
-        observer.observe(targetElement);
-    });
-});
-
 // AE AIL
 document.addEventListener("DOMContentLoaded", function () {
     const arrowLeft = document.querySelector('.arrow-indicator-left');
     const containerElement = document.getElementById('2');
-    const targetElement = containerElement; // Change this to the actual ID of the element you want to observe
 
     let hasAnimated = false;
+    let animationIterationCount = 3; // Set the desired iteration count
 
     const resetAnimation = () => {
-        arrowLeft.style.animation = 'none'; // Reset animation
-        void arrowLeft.offsetWidth; // Trigger reflow for the next animation
-        arrowLeft.style.animation = null; // Re-enable animation
+        arrowLeft.style.animation = 'none';
+        void arrowLeft.offsetWidth;
+        arrowLeft.style.animation = null;
     };
 
     const startAnimation = () => {
         arrowLeft.classList.add('arrow-indicator-left');
         hasAnimated = true;
-
-        // Stop the animation after 9 seconds
-        setTimeout(() => {
-            stopAnimation();
-        }, 9000);
     };
 
     const stopAnimation = () => {
@@ -369,6 +389,8 @@ document.addEventListener("DOMContentLoaded", function () {
         entries.forEach((entry) => {
             if (entry.isIntersecting && !hasAnimated) {
                 startAnimation();
+                // Set the animation iteration count
+                arrowLeft.style.animationIterationCount = animationIterationCount;
             } else if (!entry.isIntersecting && hasAnimated) {
                 stopAnimation();
             }
@@ -379,10 +401,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver(observerCallback, { threshold: 1 });
 
     // Observe the target element
-    observer.observe(targetElement);
+    observer.observe(containerElement);
 
-    // Remove the animation class and reset animation on page load
-    resetAnimation();
+    // Stop the animation after 8 seconds
+    setTimeout(() => {
+        stopAnimation();
+    }, 9000);
 });
 // AE AIR
 document.addEventListener("DOMContentLoaded", function () {
@@ -401,11 +425,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const startAnimation = () => {
         arrowRight.classList.add('arrow-indicator-right');
         hasAnimated = true;
-
-        // Stop the animation after 9 seconds
-        setTimeout(() => {
-            stopAnimation();
-        }, 9000);
     };
 
     const stopAnimation = () => {
@@ -430,18 +449,65 @@ document.addEventListener("DOMContentLoaded", function () {
     // Observe the target element
     observer.observe(targetElement);
 
-    // Remove the animation class and reset animation on page load
-    resetAnimation();
+    // Stop the animation after 8 seconds
+    setTimeout(() => {
+        stopAnimation();
+    }, 9000);
 });
-// Animated Elements
+// AE BAV
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll('.button-animated-vertical');
+    const containerElement = document.getElementById('2');
+
+    buttons.forEach(button => {
+        let hasAnimated = false;
+
+        const resetAnimation = () => {
+            button.style.animation = 'none';
+            void button.offsetWidth;
+            button.style.animation = null;
+        };
+
+        const startAnimation = () => {
+            button.classList.add('button-animated-vertical');
+            hasAnimated = true;
+        };
+
+        const stopAnimation = () => {
+            button.classList.remove('button-animated-vertical');
+            resetAnimation();
+            hasAnimated = false;
+        };
+
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    startAnimation();
+                    // Set the animation iteration count
+                    button.style.animationIterationCount = animationIterationCount;
+                } else if (!entry.isIntersecting && hasAnimated) {
+                    stopAnimation();
+                }
+            });
+        };
+
+        // Set up Intersection Observer
+        const observer = new IntersectionObserver(observerCallback, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        });
+
+        // Observe the target element
+        observer.observe(containerElement);
+    });
+});
+
 
 
 // 3
-
 // Animated Elements
-
 // AE 1s 3
-// AE 1s 2
 document.addEventListener("DOMContentLoaded", function () {
     const containerElement = document.getElementById('3');
     const animatedElements = containerElement.querySelectorAll('.animated-element-1s');
@@ -465,8 +531,10 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(element);
     });
 });
-// 5
 
+
+
+// 5
 // Animated Elements
 // AE 1s 5
 document.addEventListener("DOMContentLoaded", function () {
