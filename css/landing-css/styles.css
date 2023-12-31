@@ -1,10 +1,14 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  zoom: 1;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
+  padding: 0;
 }
 
 
@@ -48,42 +52,69 @@ body {
 
 
 
+/* Jumbotron */
+.jumbotron {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+}
+
+.jumbotron h2,
+.jumbotron h3,
+.jumbotron h4 {
+  margin: 0;
+  align-self: center;
+}
+
+.jumbotron h2 {
+  font-size: 2em;
+}
+
+.jumbotron h3 {
+  font-size: 1.5em;
+}
+
+.jumbotron h4 {
+  font-size: 1.2em;
+}
+
+
+
 /* Color, Layout and Sizes */
 .pages-container {
-  display: flex;
+  display: grid;
+  gap: 0;
   overflow-x: hidden;
   transition: transform 0.5s ease-in-out;
-  flex-wrap: wrap;
 }
 
 .pages {
-  display: flex;
-  width: 300%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
   box-sizing: border-box;
   transition: transform 1.5s ease;
   position: relative;
 }
 
+
 .page {
   width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  gap: 0px;
   transition: all 0.7s;
   color: #000;
   transform: translateY(0);
 }
 
 .one {
-  background: transparent;
+  align-items: flex-start;
 }
 
-.two {
-  background: transparent;
-}
-
+.one,
+.two,
 .three {
   background: transparent;
 }
@@ -154,7 +185,6 @@ body {
 .l-0 {
   left: 0;
 }
-
 
 
 /* Nav */
