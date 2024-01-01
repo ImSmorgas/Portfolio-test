@@ -204,34 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
         filterElement.setAttribute('height', window.innerHeight);
     });
 });
-// Small Fix For Safari's Discrimination Against SVGs
-document.addEventListener('DOMContentLoaded', function () {
-    // Check if the browser is Safari
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    // Select the elements you want to modify
-    const bgElements = document.querySelectorAll('#bg-c1, #bg-c2, #bg-c3, #bg-c4, #bg-c5');
-
-    // Adjust width and height if the browser is Safari
-    if (isSafari) {
-        bgElements.forEach(element => {
-            element.style.width = '25%';
-            element.style.height = '25%';
-        });
-    }
-});
-document.addEventListener('DOMContentLoaded', function () {
-    // Check if the browser is Safari
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-    // Select the SVG element
-    const bgSvg = document.querySelector('.bg');
-
-    // Hide the SVG if the browser is Safari
-    if (isSafari) {
-        bgSvg.style.display = 'none';
-    }
-});
 
 
 
