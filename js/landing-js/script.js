@@ -89,7 +89,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial navigation based on hash
     const initialHash = window.location.hash.substring(1);
     if (initialHash === '1') {
-        slide('directTo1', 'pages1');
+        // Set the initial state without sliding effect
+        const scrollX = -sharedPageIndex * window.innerWidth;
+        gradientBg.style.backgroundPosition = `${scrollX}px 0`;
+        pagesContainer.style.transition = 'transform 0s'; // Disable transition temporarily
+        pagesContainer.style.transform = `translateX(${scrollX}px)`;
+        // Enable transition after the initial state is set
+        setTimeout(() => {
+            pagesContainer.style.transition = 'transform 1.5s ease'; // Adjust the duration if needed
+        });
     } else {
         slide('next', 'pages1');
     }

@@ -60,35 +60,16 @@ body {
   align-items: center;
 }
 
+.jumbotron h1,
 .jumbotron h2,
-.jumbotron h3,
-.jumbotron h4 {
+.jumbotron h3 {
   margin: 0;
   align-self: center;
-}
-
-.jumbotron h2 {
-  font-size: 2em;
-}
-
-.jumbotron h3 {
-  font-size: 1.5em;
-}
-
-.jumbotron h4 {
-  font-size: 1.2em;
 }
 
 
 
 /* Color, Layout and Sizes */
-.pages-container {
-  display: grid;
-  gap: 0;
-  overflow-x: hidden;
-  transition: transform 0.5s ease-in-out;
-}
-
 .pages {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -107,25 +88,15 @@ body {
   transition: all 0.7s;
   color: #000;
   transform: translateY(0);
-}
-
-.one {
-  align-items: flex-start;
+  align-items: initial;
+  /* Remove center alignment */
+  align-self: flex-start;
 }
 
 .one,
 .two,
 .three {
   background: transparent;
-}
-
-.content {
-  width: 84vw;
-  height: 84vh;
-  margin-left: 8vw;
-  margin-right: 8vw;
-  margin-top: 8vh;
-  margin-bottom: 8vh;
 }
 
 .text-fefefe {
@@ -172,7 +143,7 @@ body {
 }
 
 .glass {
-  background-color: #f9f9f9 .78;
+  background-color: rgba(240, 240, 240, .38);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .37);
@@ -332,6 +303,7 @@ body {
 .animated-element-1s {
   opacity: 0;
   transition: opacity 1s ease-in 1s, transform 1s ease-out 0s;
+  margin-bottom: 0;
 }
 
 .animated-element-1s:not(.active),
