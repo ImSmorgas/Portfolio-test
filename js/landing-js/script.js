@@ -105,6 +105,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+// Preloader
+document.addEventListener("DOMContentLoaded", function () {
+    // Simulate a delay of 3 seconds (3000 milliseconds)
+    setTimeout(function () {
+        // Hide preloader
+        document.getElementById("preloader").style.display = "none";
+
+        // Show content
+        document.getElementById("content").style.display = "block";
+    }, 3000);
+});
+
+
+
 // Background
 // Balls
 document.addEventListener('DOMContentLoaded', function () {
@@ -204,7 +218,6 @@ document.addEventListener('DOMContentLoaded', function () {
         filterElement.setAttribute('height', window.innerHeight);
     });
 });
-
 
 
 
